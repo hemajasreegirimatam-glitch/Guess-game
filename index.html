@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Guess the Number Game</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      background: #f3f0ff;
+      padding-top: 80px;
+    }
+
+    .box {
+      background: white;
+      padding: 30px;
+      width: 300px;
+      margin: auto;
+      border-radius: 15px;
+      box-shadow: 0px 0px 10px #ccc;
+    }
+
+    input {
+      padding: 10px;
+      width: 80%;
+      margin-top: 10px;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 10px 15px;
+      cursor: pointer;
+      border: none;
+      background: #6c5ce7;
+      color: white;
+      border-radius: 8px;
+    }
+
+    #msg {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    <h2>🎯 Guess the Number</h2>
+    <p>1 to 100 madhya number guess cheyyi</p>
+
+    <input type="number" id="guess" placeholder="Enter your guess">
+
+    <br>
+    <button onclick="checkGuess()">Check</button>
+
+    <p id="msg"></p>
+  </div>
+
+  <script>
+    let randomNumber = Math.floor(Math.random() * 100) + 1;
+    let attempts = 0;
+
+    function checkGuess() {
+      let userGuess = document.getElementById("guess").value;
+      let msg = document.getElementById("msg");
+
+      attempts++;
+
+      if (userGuess == randomNumber) {
+        msg.innerHTML = "🎉 Correct! You won in " + attempts + " attempts";
+        msg.style.color = "green";
+      }
+      else if (userGuess > randomNumber) {
+        msg.innerHTML = "📉 Too high! Try smaller number";
+        msg.style.color = "red";
+      }
+      else {
+        msg.innerHTML = "📈 Too low! Try bigger number";
+        msg.style.color = "orange";
+      }
+    }
+  </script>
+
+</body>
+</html>
